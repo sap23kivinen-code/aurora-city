@@ -24,3 +24,14 @@
 .server-ip{font-family:monospace;color:#d9ddeb;font-size:13px}
 #copy-ip{background:transparent;color:#fff;border:1px solid #ffffff55;cursor:pointer}
 @media(max-width:760px){.extra-grid{grid-template-columns:1fr}.application-form{padding:20px}.server-strip-inner{align-items:flex-start;flex-direction:column}.nav-links{max-height:75vh;overflow:auto}}
+
+/* News and upgraded VIP shop */
+.news-section{background:linear-gradient(180deg,#0a0c15,#101421)}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.news-card{position:relative;min-height:255px;padding:27px;border:1px solid #ffffff1b;background:linear-gradient(145deg,#171b2a,#0c0f19);display:flex;flex-direction:column;align-items:flex-start}
+.news-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,#e43b59,transparent)}
+.news-featured{background:linear-gradient(145deg,#251522,#10121e)}
+.news-meta{width:100%;display:flex;justify-content:space-between;gap:12px;color:#858da2;font-size:9px;font-weight:800;letter-spacing:1.5px}
+.news-tag{color:#ff637b}.news-card h3{font-family:"Barlow Condensed",sans-serif;font-size:29px;letter-spacing:1px;line-height:1.05;margin:30px 0 10px}.news-card p{font-size:12px;line-height:1.85;color:#aeb4c4;margin:0 0 22px}.news-date{margin-top:auto;color:#7f879a;font-size:9px;font-weight:800;letter-spacing:1.4px}.news-link{margin-top:auto;color:#ff526c;font-size:10px;font-weight:900;letter-spacing:1.3px}
+.shop-card{position:relative;min-height:275px;display:flex;flex-direction:column;overflow:hidden;transition:transform .2s,border-color .2s}.shop-card:hover{transform:translateY(-5px);border-color:#e43b5966}.shop-tier{font-size:9px;font-weight:900;letter-spacing:2px;color:#f04a65}.shop-card h3{font-size:38px;margin:25px 0 8px}.shop-card p{margin:0 0 25px}.shop-bottom{margin-top:auto;display:flex;flex-direction:column;align-items:flex-start;gap:12px}.shop-bottom strong{font-size:9px;letter-spacing:1px;color:#c5cada}.shop-status{margin:0}.shop-card-featured{border-color:#e43b5970;background:linear-gradient(145deg,#291622,#111421);box-shadow:0 12px 40px #e43b5912}.shop-popular{position:absolute;right:18px;top:18px;padding:7px 9px;background:#e43b59;color:white;font-size:8px;font-weight:900;letter-spacing:1px}
+@media(max-width:760px){.news-grid{grid-template-columns:1fr}.news-card{min-height:220px}.shop-card{min-height:250px}}

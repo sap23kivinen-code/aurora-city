@@ -1,0 +1,24 @@
+AURORA CITY – LIVE-PELAAJALASKURI
+
+TÄRKEÄÄ: Tarvitset ilmaisen Cloudflare-tilin Worker-välityspalvelua varten. Älä laita palvelimen salasanoja tai txAdmin-tunnuksia tähän.
+
+1) CLOUDFLARE WORKER
+- Kirjaudu Cloudflareen ja avaa Workers & Pages.
+- Valitse Create -> Worker -> Deploy.
+- Avaa juuri luotu Worker ja valitse Edit code.
+- Korvaa editorin sisältö tämän paketin worker.js-tiedoston sisällöllä ja paina Deploy.
+- Kopioi Workerisi julkinen URL, esimerkiksi https://aurora-status.<oma-tunnus>.workers.dev
+
+2) LISÄÄ URL INDEX.HTML-TIEDOSTOON
+- Avaa aurora_index.html tekstieditorissa.
+- Etsi rivi: const STATUS_API = 'PASTE_CLOUDFLARE_WORKER_URL_HERE';
+- Korvaa PASTE... koko Worker-osoitteellasi (säilytä lainausmerkit).
+- Tallenna tiedosto nimellä index.html.
+- Lataa GitHub-repositorion juureen vanhan index.html-tiedoston tilalle ja tee Commit changes.
+
+3) TARKISTA
+- Avaa https://sap23kivinen-code.github.io/aurora-city/
+- Pelaajamäärä ja ONLINE/OFFLINE-tila päivittyvät 30 sekunnin välein.
+- Jos Worker ei saa yhteyttä FiveM-palvelimeen, sivulla näkyy EI YHTEYTTÄ.
+
+Paketin worker.js välittää vain julkiset dynamic.json-tiedot (pelaajamäärä, maksimimäärä ja palvelimen nimi).
