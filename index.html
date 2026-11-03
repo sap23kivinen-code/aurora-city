@@ -16,7 +16,7 @@
   <header class="nav-wrap">
     <nav class="nav container">
       <a class="brand" href="#home" aria-label="Aurora City etusivu">
-        <img class="brand-logo" src="auroracity-logo.png" alt="AURORA CITY logo">
+        <span class="brand-mark">AC</span>
         <span><b>AURORA CITY</b><small>THE AMERICAN DREAM</small></span>
       </a>
       <button class="menu-toggle" aria-label="Avaa valikko" aria-expanded="false">☰</button>
@@ -24,6 +24,9 @@
         <a href="#about">PALVELIMESTA</a>
         <a href="#features">MIKSI AURORA?</a>
         <a href="#rules">SÄÄNNÖT</a>
+        <a href="#whitelist">WHITELIST</a>
+        <a href="#staff">STAFF</a>
+        <a href="#shop">KAUPPA</a>
         <a class="nav-join" href="https://discord.gg/x7SMEA7uZe" target="_blank" rel="noopener">LIITY DISCORDIIN <span>↗</span></a>
       </div>
     </nav>
@@ -81,6 +84,65 @@
       </div>
     </section>
 
+
+    <section class="server-strip">
+      <div class="container server-strip-inner">
+        <div class="server-name"><span class="server-dot"></span><span class="server-label">AURORA CITY ROLEPLAY</span><strong>FIVEM-PALVELIN</strong></div>
+        <div class="server-address"><span>PALVELIMEN IP</span><code>163.5.63.174:30120</code><button class="copy-ip" type="button" id="copyIp">KOPIOI IP</button></div>
+        <p class="server-note">Live-pelaajamäärä voidaan lisätä, kun palvelimen statusrajapinta tai taustapalvelu on käytettävissä.</p>
+      </div>
+    </section>
+
+    <section class="section whitelist-section" id="whitelist">
+      <div class="container">
+        <div class="section-kicker">04 <span>—</span> HAE MUKAAN</div>
+        <div class="whitelist-layout">
+          <div>
+            <h2 class="section-title">WHITELIST-<span>HAKEMUS.</span></h2>
+            <p class="section-lead">Haluatko osaksi AURORA CITYä? Täytä hakemus huolellisesti. Lomake kokoaa vastauksesi valmiiksi viestiksi, jonka voit lähettää Discordissamme.</p>
+            <div class="notice-card"><strong>MITEN HAKEMINEN TOIMII?</strong><p>Täytä kaikki kentät ja paina lähetyspainiketta. Hakemus kopioidaan leikepöydälle ja Discord avataan. Liitä hakemus (Ctrl+V) henkilökunnan osoittamaan hakemuskanavaan.</p></div>
+          </div>
+          <form class="application-form" id="whitelistForm">
+            <label>Hahmon nimi<input name="character" required maxlength="60" placeholder="Etunimi Sukunimi"></label>
+            <label>Ikäsi<input name="age" type="number" min="13" max="99" required placeholder="Ikäsi"></label>
+            <label>Discord-käyttäjänimi<input name="discord" required maxlength="60" placeholder="Discord-käyttäjänimi"></label>
+            <label>Kuinka kauan olet pelannut roolipelejä?<textarea name="experience" required rows="3" maxlength="1200" placeholder="Kerro aiemmasta RP-kokemuksestasi..."></textarea></label>
+            <label>Miksi haluat liittyä AURORA CITYyn?<textarea name="motivation" required rows="3" maxlength="1200" placeholder="Kerro omin sanoin..."></textarea></label>
+            <label>Tilanne: näet kadulla henkilön ryöstävän kauppaa. Miten toimit?<textarea name="scenario" required rows="3" maxlength="1200" placeholder="Kuvaile, miten toimisit roolipelissä..."></textarea></label>
+            <button class="button button-primary form-submit" type="submit">KOPIOI HAKEMUS JA AVAA DISCORD <span>↗</span></button>
+            <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section staff-section" id="staff">
+      <div class="container">
+        <div class="section-kicker">05 <span>—</span> KAUPUNGIN TAUSTALLA</div>
+        <h2 class="section-title">STAFF-<span>TIIMI.</span></h2>
+        <p class="section-lead">Henkilökunnan nimet, kuvat ja tehtävänimikkeet voidaan lisätä, kun toimitat tiimin tiedot.</p>
+        <div class="staff-grid">
+          <article class="staff-card"><div class="staff-avatar">AC</div><span>PALVELIMEN JOHTO</span><h3>OMISTAJAT</h3><p>Palvelimen kehitys ja yhteisön suunta.</p></article>
+          <article class="staff-card"><div class="staff-avatar">AD</div><span>PALVELIMEN HALLINTO</span><h3>YLLÄPITO</h3><p>Palvelimen toiminnan ja henkilökunnan koordinointi.</p></article>
+          <article class="staff-card"><div class="staff-avatar">ST</div><span>PELAAJATUKI</span><h3>STAFF-TIIMI</h3><p>Apua pelaajille ja roolipelitilanteiden valvonta.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shop-section" id="shop">
+      <div class="container">
+        <div class="section-kicker">06 <span>—</span> AURORA CITY STORE</div>
+        <h2 class="section-title">VIP &amp; <span>KAUPPA.</span></h2>
+        <p class="section-lead">VIP-pakettien sisällöt, hinnat ja turvallinen maksutapa lisätään, kun palvelimen tuotteet on vahvistettu.</p>
+        <div class="shop-grid">
+          <article class="shop-card"><span class="shop-tag">JÄSENYYS</span><h3>VIP BASIC</h3><p>Pakettikuvaus vahvistetaan myöhemmin.</p><strong>HINTA ILMOITETAAN DISCORDISSA</strong><a href="https://discord.gg/x7SMEA7uZe" target="_blank" rel="noopener" class="text-link">KYSY LISÄÄ <span>→</span></a></article>
+          <article class="shop-card shop-featured"><span class="shop-tag">JÄSENYYS</span><h3>VIP PLUS</h3><p>Pakettikuvaus vahvistetaan myöhemmin.</p><strong>HINTA ILMOITETAAN DISCORDISSA</strong><a href="https://discord.gg/x7SMEA7uZe" target="_blank" rel="noopener" class="text-link">KYSY LISÄÄ <span>→</span></a></article>
+          <article class="shop-card"><span class="shop-tag">JÄSENYYS</span><h3>VIP ELITE</h3><p>Pakettikuvaus vahvistetaan myöhemmin.</p><strong>HINTA ILMOITETAAN DISCORDISSA</strong><a href="https://discord.gg/x7SMEA7uZe" target="_blank" rel="noopener" class="text-link">KYSY LISÄÄ <span>→</span></a></article>
+        </div>
+        <p class="shop-disclaimer">Kaupan maksut eivät ole vielä käytössä. Älä maksa ennen virallisten tuotteiden, hintojen ja maksutavan julkaisemista.</p>
+      </div>
+    </section>
+
     <section class="join section">
       <div class="join-bg"></div>
       <div class="container join-content">
@@ -94,7 +156,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <a class="brand" href="#home"><img class="brand-logo" src="auroracity-logo.png" alt="AURORA CITY logo"><span><b>AURORA CITY</b><small>THE AMERICAN DREAM</small></span></a>
+      <a class="brand" href="#home"><span class="brand-mark">AC</span><span><b>AURORA CITY</b><small>THE AMERICAN DREAM</small></span></a>
       <p>© <span id="year"></span> AURORA CITY. Kaikki oikeudet pidätetään.</p>
       <a href="https://discord.gg/x7SMEA7uZe" target="_blank" rel="noopener">DISCORD ↗</a>
     </div>
@@ -108,6 +170,48 @@
       const open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(open));
     });
+
+    const copyIp = document.getElementById('copyIp');
+    copyIp.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('163.5.63.174:30120');
+        copyIp.textContent = 'KOPIOITU!';
+      } catch {
+        copyIp.textContent = 'IP: 163.5.63.174:30120';
+      }
+    });
+
+    document.getElementById('whitelistForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const data = new FormData(form);
+      const message = [
+        'AURORA CITY – WHITELIST-HAKEMUS',
+        '',
+        'Hahmon nimi: ' + data.get('character'),
+        'Ikä: ' + data.get('age'),
+        'Discord: ' + data.get('discord'),
+        '',
+        'RP-kokemus:',
+        data.get('experience'),
+        '',
+        'Miksi AURORA CITY?',
+        data.get('motivation'),
+        '',
+        'Tilannekysymys:',
+        data.get('scenario')
+      ].join('\n');
+
+      const feedback = document.getElementById('formFeedback');
+      try {
+        await navigator.clipboard.writeText(message);
+        feedback.textContent = 'Hakemus kopioitu! Discord avautuu uuteen välilehteen. Liitä hakemus henkilökunnan osoittamaan kanavaan (Ctrl+V).';
+      } catch {
+        feedback.textContent = 'Leikepöydälle kopiointi ei onnistunut. Kokeile uudelleen tai kopioi vastaukset käsin.';
+      }
+      window.open('https://discord.gg/x7SMEA7uZe', '_blank', 'noopener');
+    });
+
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       links.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
