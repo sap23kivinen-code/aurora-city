@@ -89,10 +89,8 @@
       <div class="section-kicker">06 <span>—</span> MITÄ KAUPUNGISSA TAPAHTUU</div>
       <h2 class="section-title">UUTISET &amp; <span>PÄIVITYKSET.</span></h2>
       <p class="extra-lead">Seuraa AURORA CITYn tiedotteita ja palvelimen kehitystä. Uudet ilmoitukset lisätään tälle sivulle.</p>
-      <div class="news-grid">
-        <article class="news-card news-featured"><div class="news-meta"><span class="news-tag">TIEDOTE</span><span>VERKKOSIVU</span></div><h3>AURORA CITYN UUSI VERKKOSIVU</h3><p>Sivustoa kehitetään parhaillaan. Täältä löydät jatkossa tärkeät tiedotteet, palvelimen uutiset ja VIP-pakettien tiedot.</p><span class="news-date">AURORA CITY</span></article>
-        <article class="news-card"><div class="news-meta"><span class="news-tag">PÄIVITYS</span><span>KAUPUNKI</span></div><h3>PALVELIMEN KEHITYS</h3><p>Palvelimen ominaisuuksista ja tulevista muutoksista tiedotetaan, kun yksityiskohdat on vahvistettu.</p><span class="news-date">LISÄTIETOJA TULOSSA</span></article>
-        <article class="news-card"><div class="news-meta"><span class="news-tag">ILMOITUS</span><span>YHTEISÖ</span></div><h3>PYSY MUKANA</h3><p>Ajankohtaiset ilmoitukset ja yhteisön tiedotteet löydät myös AURORA CITYn Discordista.</p><a class="news-link" href="https://discord.gg/x7SMEA7uZe" target="_blank" rel="noopener">AVAA DISCORD ↗</a></article>
+      <div class="news-grid" id="news-grid" aria-live="polite">
+        <p class="extra-lead">Ladataan uusimpia uutisia…</p>
       </div></div></section>
     <section class="section extra-section shop-section" id="shop"><div class="container">
       <div class="section-kicker">07 <span>—</span> TUE PALVELINTA</div><h2 class="section-title">AURORA <span>VIP-KAUPPA.</span></h2>
@@ -117,6 +115,80 @@
   </div><p class="disclaimer">Yhteisön fanisivusto. Ei yhteydessä Rockstar Gamesiin.</p></footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // AURORA CITY: hae ylläpidossa julkaistut uutiset Cloudflare Workerista.
+    (async function loadAuroraNews() {
+      const grid = document.getElementById('news-grid');
+      if (!grid) return;
+      const api = 'https://aurora-city-admin.sap23-kivinen.workers.dev/api/news';
+      try {
+        const response = await fetch(api, { headers: { 'Accept': 'application/json' } });
+        if (!response.ok) throw new Error('Uutisten haku epäonnistui (' + response.status + ')');
+        const payload = await response.json();
+        const news = Array.isArray(payload) ? payload : (Array.isArray(payload.news) ? payload.news : []);
+        news.sort((a, b) => {
+          const da = Date.parse(a.createdAt || a.date || a.updatedAt || '') || 0;
+          const db = Date.parse(b.createdAt || b.date || b.updatedAt || '') || 0;
+          return db - da;
+        });
+        grid.replaceChildren();
+        if (!news.length) {
+          const empty = document.createElement('p');
+          empty.className = 'extra-lead';
+          empty.textContent = 'Uutisia ei ole vielä julkaistu.';
+          grid.appendChild(empty);
+          return;
+        }
+        for (const item of news) {
+          const card = document.createElement('article');
+          card.className = 'news-card';
+          const meta = document.createElement('div');
+          meta.className = 'news-meta';
+          const tag = document.createElement('span');
+          tag.className = 'news-tag';
+          tag.textContent = 'TIEDOTE';
+          const category = document.createElement('span');
+          category.textContent = 'AURORA CITY';
+          meta.append(tag, category);
+
+          const title = document.createElement('h3');
+          title.textContent = item.title || 'Tiedote';
+          const body = document.createElement('p');
+          body.textContent = item.body || item.content || '';
+
+          card.append(meta, title, body);
+          const imageUrl = typeof item.image === 'string' ? item.image.trim() : '';
+          if (/^https:\/\/[^\\s]+$/i.test(imageUrl)) {
+            const image = document.createElement('img');
+            image.src = imageUrl;
+            image.alt = item.title ? 'Uutiskuva: ' + item.title : 'Uutiskuva';
+            image.loading = 'lazy';
+            image.style.width = '100%';
+            image.style.height = 'auto';
+            image.style.marginTop = '14px';
+            image.style.objectFit = 'cover';
+            card.appendChild(image);
+          }
+          const dateText = item.createdAt || item.date || item.updatedAt || '';
+          if (dateText) {
+            const date = document.createElement('span');
+            date.className = 'news-date';
+            const parsed = new Date(dateText);
+            date.textContent = Number.isNaN(parsed.getTime()) ? String(dateText) : parsed.toLocaleDateString('fi-FI');
+            card.appendChild(date);
+          }
+          grid.appendChild(card);
+        }
+      } catch (error) {
+        grid.replaceChildren();
+        const message = document.createElement('p');
+        message.className = 'extra-lead';
+        message.textContent = 'Uutisia ei voitu ladata juuri nyt. Yritä päivittää sivu hetken kuluttua.';
+        grid.appendChild(message);
+        console.error('AURORA CITY news:', error);
+      }
+    })();
+
     const toggle = document.querySelector('.menu-toggle');
     const links = document.querySelector('.nav-links');
     toggle.addEventListener('click', () => { const open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(open)); });
